@@ -1,4 +1,15 @@
-export const selectAllPosition = (state) => state.position;
+const { createSlice } = require("@reduxjs/toolkit");
+
+const positionSlice = createSlice({
+  name: '@@position',
+  initialState: [],
+  reducers: {
+    addPositions: (_, action) => action.payload,
+  }
+})
+
+export const {addPositions} = positionSlice.actions
+export const positionReducer = positionSlice.reducer
 
 export const selectVisiblePositions = (state, filters = []) => {
   if (filters.length === 0) {
